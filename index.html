@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#e8f8f8">
+    <meta name="description" content="Invitación a los 8 años de Mia Marvely Magaña Leal en Aqua Park Palín, Escuintla.">
+    <title>¡Mis 8 Años! | Mia Marvely Magaña Leal</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #315b63;
+        --muted: #6b8589;
+        --aqua: #dff5f5;
+        --aqua-strong: #79cbd0;
+        --aqua-deep: #4caeb7;
+        --pink: #eea3bc;
+        --pink-deep: #d87594;
+        --pink-pale: #fff0f5;
+        --paper: #fffefa;
+        --line: #d7eaea;
+        --shadow: 0 16px 44px rgba(55, 115, 123, 0.11);
+        --display: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+        --body: "Trebuchet MS", Arial, sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+      body {
+        min-width: 320px;
+        margin: 0;
+        color: var(--ink);
+        background: #f4fbfa;
+        font-family: var(--body);
+        line-height: 1.6;
+      }
+      button, input, textarea { font: inherit; }
+      button, a { -webkit-tap-highlight-color: transparent; }
+      a { color: inherit; }
+      button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 3px solid var(--pink-deep);
+        outline-offset: 3px;
+      }
+      [hidden] { display: none !important; }
+
+      .bubbles-layer {
+        position: absolute;
+        z-index: 3;
+        inset: 0;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .bubble {
+        position: absolute;
+        display: block;
+        min-width: 28px;
+        min-height: 28px;
+        padding: 0;
+        border: 1px solid rgba(255,255,255,.92);
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 28%, rgba(255,255,255,.95), rgba(255,255,255,.43) 22%, rgba(121,203,208,.18) 66%, rgba(238,163,188,.2));
+        box-shadow: inset -5px -6px 12px rgba(121,203,208,.2), 0 2px 8px rgba(255,255,255,.2);
+        cursor: pointer;
+        pointer-events: auto;
+        touch-action: manipulation;
+        animation: rise linear infinite;
+      }
+      .bubble:hover { border-color: var(--pink); }
+      .bubble.popped { animation: pop .24s ease-out forwards; pointer-events: none; }
+      @keyframes rise {
+        0% { transform: translate3d(0, 0, 0); opacity: 0; }
+        12% { opacity: .82; }
+        50% { transform: translate3d(18px, -55vh, 0); }
+        100% { transform: translate3d(-12px, -118vh, 0); opacity: .7; }
+      }
+      @keyframes pop { to { transform: scale(1.8); opacity: 0; } }
+      @keyframes float-soft {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-9px); }
+      }
+      @keyframes pop-in {
+        0% { transform: scale(.94); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+      }
+      @keyframes wave-shift { to { transform: translateX(-50%); } }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(145deg, #e1f7f5 0%, #f3ecf8 54%, #ffeaf1 100%);
+        text-align: center;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        max-width: 850px;
+        min-height: 650px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        margin: 0 auto;
+        padding: 74px 24px 150px;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255,255,255,.85);
+        border-radius: 999px;
+        background: rgba(255,255,255,.68);
+        padding: 8px 16px;
+        color: var(--pink-deep);
+        font-size: .78rem;
+        font-weight: 800;
+        letter-spacing: .15em;
+        text-transform: uppercase;
+      }
+      .age-badge {
+        display: grid;
+        width: 154px;
+        height: 154px;
+        place-items: center;
+        border: 8px solid rgba(255,255,255,.88);
+        border-radius: 50%;
+        background: linear-gradient(145deg, var(--pink) 0%, #e889aa 100%);
+        box-shadow: 0 16px 35px rgba(216,117,148,.27);
+        color: white;
+        font-family: var(--display);
+        font-size: 6.3rem;
+        font-weight: 800;
+        line-height: 1;
+        animation: float-soft 4s ease-in-out infinite;
+      }
+      h1, h2, h3, p { margin-top: 0; }
+      .hero h1 {
+        margin: 2px 0 0;
+        color: var(--ink);
+        font-family: var(--display);
+        font-size: clamp(2.8rem, 8vw, 5.1rem);
+        font-weight: 800;
+        letter-spacing: -.045em;
+        line-height: 1.02;
+      }
+      .hero-name {
+        max-width: 700px;
+        margin: 0;
+        color: var(--pink-deep);
+        font-family: var(--display);
+        font-size: clamp(1.55rem, 4vw, 2.25rem);
+        font-weight: 700;
+        line-height: 1.2;
+        text-wrap: balance;
+      }
+      .hero h2 {
+        margin: 0;
+        color: #5cabb1;
+        font-family: var(--display);
+        font-size: clamp(1.3rem, 4vw, 2rem);
+        font-weight: 700;
+        text-wrap: balance;
+      }
+      .hero-copy {
+        max-width: 620px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.08rem;
+        text-wrap: pretty;
+      }
+      .button-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 0;
+        border-radius: 999px;
+        padding: 12px 22px;
+        background: var(--pink-deep);
+        box-shadow: 0 9px 22px rgba(216,117,148,.22);
+        color: #fff;
+        font-weight: 800;
+        text-align: center;
+        text-decoration: none;
+        transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+        cursor: pointer;
+      }
+      .button:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(216,117,148,.28); }
+      .button:active { transform: scale(.97); }
+      .button-aqua { background: var(--aqua-deep); box-shadow: 0 9px 22px rgba(76,174,183,.2); }
+      .button-aqua:hover { background: #3b9da6; box-shadow: 0 12px 26px rgba(76,174,183,.28); }
+      .button-light { border: 1px solid rgba(49,91,99,.13); background: var(--paper); box-shadow: none; color: var(--ink); }
+      .button-dark { background: var(--ink); box-shadow: 0 9px 22px rgba(49,91,99,.2); }
+      .button:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+      .bubble-hint { margin: 0; color: var(--muted); font-size: .88rem; }
+      .hero-wave {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 200%;
+        height: 95px;
+        fill: #f4fbfa;
+        animation: wave-shift 14s linear infinite;
+      }
+
+      .site-nav {
+        position: sticky;
+        z-index: 20;
+        top: 0;
+        border-bottom: 1px solid rgba(215,234,234,.85);
+        background: rgba(255,254,250,.92);
+        backdrop-filter: blur(12px);
+      }
+      .nav-inner {
+        display: flex;
+        max-width: 1080px;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        margin: 0 auto;
+        overflow-x: auto;
+        padding: 10px 16px;
+        scrollbar-width: none;
+      }
+      .nav-inner::-webkit-scrollbar { display: none; }
+      .nav-inner a {
+        flex: 0 0 auto;
+        border-radius: 999px;
+        padding: 8px 13px;
+        color: var(--muted);
+        font-size: .88rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background .2s ease, color .2s ease;
+      }
+      .nav-inner a:hover { background: var(--pink-pale); color: var(--pink-deep); }
+
+      main { position: relative; z-index: 2; }
+      .section {
+        width: min(100% - 36px, 1000px);
+        margin: 0 auto;
+        padding: 68px 0 12px;
+        scroll-margin-top: 82px;
+      }
+      .section-heading { margin-bottom: 28px; text-align: center; }
+      .section-heading h2 {
+        margin: 0 0 8px;
+        color: var(--ink);
+        font-family: var(--display);
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 800;
+        letter-spacing: -.025em;
+        line-height: 1.12;
+        text-wrap: balance;
+      }
+      .section-heading p { max-width: 700px; margin: 0 auto; color: var(--muted); font-size: 1.02rem; text-wrap: pretty; }
+      .card {
+        border: 1px solid rgba(215,234,234,.8);
+        border-radius: 26px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+      .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+      .time-card {
+        display: flex;
+        min-height: 138px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(255,255,255,.9);
+        border-radius: 24px;
+        background: linear-gradient(145deg, #e2f7f5, #faeefa);
+        box-shadow: 0 9px 26px rgba(55,115,123,.08);
+      }
+      .time-card strong { color: var(--ink); font-family: var(--display); font-size: clamp(2.7rem, 7vw, 4rem); font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1; }
+      .time-card span { margin-top: 8px; color: var(--muted); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+      .today-message { margin: 0; color: var(--pink-deep); font-family: var(--display); font-size: 2rem; font-weight: 800; text-align: center; }
+
+      .detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+      .detail-card { display: flex; min-height: 180px; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 24px 18px; text-align: center; transition: transform .2s ease; }
+      .detail-card:hover { transform: translateY(-3px); }
+      .detail-icon { display: grid; width: 48px; height: 48px; place-items: center; border-radius: 50%; background: var(--pink-pale); color: var(--pink-deep); font-size: 1.35rem; }
+      .detail-label { margin: 2px 0 0; color: var(--muted); font-size: .76rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+      .detail-value { margin: 0; color: var(--ink); font-family: var(--display); font-size: 1.2rem; font-weight: 700; line-height: 1.3; text-wrap: balance; }
+      .directions { margin-top: 16px; padding: 26px; text-align: center; }
+      .directions h3 { margin: 0 0 16px; font-family: var(--display); font-size: 1.45rem; }
+
+      .gallery-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+      .photo-button {
+        overflow: hidden;
+        border: 7px solid var(--paper);
+        border-radius: 21px;
+        background: var(--paper);
+        padding: 0 0 12px;
+        box-shadow: 0 10px 24px rgba(55,115,123,.13);
+        cursor: zoom-in;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+      .photo-button:nth-child(odd) { transform: rotate(-2deg); }
+      .photo-button:nth-child(even) { transform: rotate(2deg); }
+      .photo-button:hover { z-index: 1; transform: rotate(0) scale(1.04); box-shadow: 0 15px 32px rgba(55,115,123,.2); }
+      .photo-button img { display: block; width: 100%; aspect-ratio: 1; border-radius: 14px; object-fit: cover; }
+      .photo-caption { display: block; padding: 10px 5px 0; color: var(--muted); font-size: .82rem; font-weight: 700; }
+      .photo-note { margin: 19px auto 0; color: var(--muted); font-size: .88rem; text-align: center; text-wrap: pretty; }
+      .lightbox {
+        position: fixed;
+        z-index: 100;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        background: rgba(31,66,73,.8);
+        backdrop-filter: blur(8px);
+      }
+      .lightbox-card { position: relative; width: min(100%, 560px); border: 8px solid var(--paper); border-radius: 26px; background: var(--paper); padding: 10px; animation: pop-in .2s ease-out; }
+      .lightbox-card img { display: block; width: 100%; max-height: 72vh; aspect-ratio: 1; border-radius: 18px; object-fit: cover; }
+      .lightbox-caption { margin: 10px 40px 0; color: var(--ink); font-weight: 700; text-align: center; }
+      .icon-button {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 0;
+        border-radius: 50%;
+        background: var(--paper);
+        box-shadow: 0 4px 14px rgba(20,40,45,.15);
+        color: var(--ink);
+        font-size: 1.25rem;
+        font-weight: 800;
+        cursor: pointer;
+      }
+      .lightbox-close { position: absolute; top: -17px; right: -17px; background: var(--pink-deep); color: #fff; }
+      .lightbox-prev, .lightbox-next { position: absolute; top: 46%; }
+      .lightbox-prev { left: 16px; }
+      .lightbox-next { right: 16px; }
+
+      .important-card { padding: clamp(22px, 5vw, 42px); background: linear-gradient(145deg, #fff0f5, #fffefa); }
+      .important-lead { display: flex; align-items: flex-start; gap: 17px; }
+      .important-icon { display: grid; width: 54px; height: 54px; flex: 0 0 54px; place-items: center; border-radius: 50%; background: var(--pink-deep); color: #fff; font-size: 1.5rem; }
+      .important-card h3 { margin: 3px 0 8px; font-family: var(--display); font-size: 1.45rem; line-height: 1.25; }
+      .important-card p { margin: 0; color: var(--ink); text-wrap: pretty; }
+      .warning-note { margin-top: 20px !important; border: 1px solid #f1d8e1; border-radius: 17px; background: rgba(255,255,255,.8); padding: 15px 17px; }
+
+      .menu-card { padding: clamp(22px, 5vw, 36px); text-align: center; }
+      .menu-badge { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; background: #e4f6f5; padding: 9px 16px; color: #347c83; font-size: .84rem; font-weight: 800; }
+      .menu-card h3 { margin: 19px 0 7px; font-family: var(--display); font-size: 1.55rem; }
+      .menu-card p { max-width: 700px; margin: 0 auto; color: var(--muted); text-wrap: pretty; }
+      .menu-reminder { margin-top: 15px !important; color: var(--pink-deep) !important; font-weight: 800; }
+
+      .checklist-card { padding: clamp(20px, 5vw, 34px); }
+      .progress-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+      .progress-track { height: 12px; flex: 1; overflow: hidden; border-radius: 99px; background: #e6eeee; }
+      .progress-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--aqua-deep), var(--pink)); transition: width .35s ease; }
+      .progress-count { min-width: 48px; color: var(--muted); font-size: .88rem; font-weight: 800; text-align: right; }
+      .checklist-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; padding: 0; list-style: none; }
+      .check-item { display: flex; width: 100%; min-height: 57px; align-items: center; gap: 12px; border: 2px solid var(--line); border-radius: 17px; background: #fff; padding: 11px 14px; color: var(--ink); font-weight: 700; text-align: left; cursor: pointer; transition: border-color .18s ease, background .18s ease, transform .18s ease; }
+      .check-item:hover { border-color: var(--aqua-strong); transform: translateY(-1px); }
+      .check-item.is-checked { border-color: var(--pink); background: var(--pink-pale); }
+      .check-circle { display: grid; width: 27px; height: 27px; flex: 0 0 27px; place-items: center; border: 2px solid #abc4c7; border-radius: 50%; color: #fff; font-size: .85rem; }
+      .is-checked .check-circle { border-color: var(--pink-deep); background: var(--pink-deep); }
+      .is-checked .check-label { color: #71878b; text-decoration: line-through; }
+      .check-complete { margin: 20px 0 0; color: var(--pink-deep); font-family: var(--display); font-size: 1.25rem; font-weight: 800; text-align: center; }
+
+      .form-card { max-width: 680px; margin: 0 auto; padding: clamp(20px, 5vw, 36px); }
+      .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; }
+      .field { display: flex; flex-direction: column; gap: 7px; }
+      .field-full { grid-column: 1 / -1; }
+      .field label, .field-label { color: var(--ink); font-size: .95rem; font-weight: 800; }
+      .field input, .field textarea {
+        width: 100%;
+        min-height: 48px;
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        padding: 11px 13px;
+        color: var(--ink);
+      }
+      .field textarea { min-height: 92px; resize: vertical; }
+      .field input::placeholder, .field textarea::placeholder { color: #91a5a8; }
+      .stepper {
+        display: flex;
+        min-height: 49px;
+        align-items: center;
+        justify-content: space-between;
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        background: #fff;
+        padding: 4px;
+      }
+      .stepper button { width: 38px; height: 38px; border: 0; border-radius: 11px; background: #e7f5f4; color: var(--ink); font-size: 1.25rem; font-weight: 800; cursor: pointer; }
+      .stepper output { min-width: 36px; font-family: var(--display); font-size: 1.35rem; font-weight: 800; text-align: center; }
+      .form-help { grid-column: 1 / -1; margin: -6px 0 0; color: var(--muted); font-size: .88rem; text-align: center; }
+      .form-error { grid-column: 1 / -1; margin: 0; color: #a84362; font-weight: 700; }
+      .form-submit { grid-column: 1 / -1; width: 100%; margin-top: 2px; }
+      .invitation-result { max-width: 680px; margin: 0 auto; scroll-margin-top: 88px; text-align: center; animation: pop-in .3s ease-out; }
+      #confirmar { scroll-margin-top: 80px; }
+      .invitation-card { overflow: hidden; border: 8px solid #fff; border-radius: 28px; background: linear-gradient(145deg, #e3f7f5, #fff0f5); padding: clamp(23px, 6vw, 42px); box-shadow: var(--shadow); }
+      .invitation-kicker { margin: 0; color: var(--pink-deep); font-size: .8rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+      .invitee-name { margin: 4px 0 0; color: var(--ink); font-family: var(--display); font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; line-height: 1.15; text-wrap: balance; }
+      .invitation-age { display: grid; width: 106px; height: 106px; place-items: center; margin: 21px auto; border: 5px solid #fff; border-radius: 50%; background: var(--pink); box-shadow: 0 7px 18px rgba(216,117,148,.2); color: #fff; font-family: var(--display); font-size: 4.4rem; font-weight: 800; line-height: 1; }
+      .invitation-title { margin: 0; font-family: var(--display); font-size: clamp(1.3rem, 4vw, 1.8rem); font-weight: 800; text-wrap: balance; }
+      .invitation-details { margin: 20px 0 0; border-radius: 18px; background: #fffefa; padding: 16px 18px; text-align: left; }
+      .invitation-row { display: flex; justify-content: space-between; gap: 16px; padding: 6px 0; }
+      .invitation-row dt { color: var(--muted); font-weight: 800; }
+      .invitation-row dd { margin: 0; color: var(--ink); font-weight: 700; text-align: right; }
+      .invite-message { margin: 15px 0 0; color: var(--muted); font-style: italic; white-space: pre-wrap; }
+      .invitation-actions { display: flex; flex-direction: column; gap: 11px; margin-top: 20px; }
+      .whatsapp-note { margin: 13px 0 0; color: var(--muted); font-size: .88rem; text-wrap: pretty; }
+      .edit-button { margin-top: 10px; border: 0; background: transparent; color: var(--muted); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+      .official-rsvp { margin-top: 36px; text-align: center; }
+      .official-rsvp p { margin-bottom: 12px; color: var(--muted); }
+      .official-rsvp .button { min-height: 58px; padding-inline: 28px; font-family: var(--display); font-size: 1.15rem; }
+      .footer { position: relative; z-index: 2; margin-top: 70px; overflow: hidden; background: linear-gradient(125deg, #5dbac1, #e18da9); padding: 57px 20px 48px; color: #fff; text-align: center; }
+      .footer h2 { margin: 0 0 8px; font-family: var(--display); font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; text-wrap: balance; }
+      .footer p { margin: 0; font-size: 1.05rem; font-weight: 700; }
+      .footer-small { margin-top: 18px !important; font-size: .82rem !important; font-weight: 500 !important; opacity: .9; }
+
+      @media (max-width: 720px) {
+        .hero-inner { min-height: 600px; padding-top: 58px; }
+        .detail-grid { grid-template-columns: 1fr; }
+        .detail-card { min-height: 145px; }
+        .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+        .countdown-grid { gap: 10px; }
+        .time-card { min-height: 120px; }
+        .nav-inner { justify-content: flex-start; }
+      }
+      @media (max-width: 520px) {
+        .section { width: min(100% - 28px, 1000px); padding-top: 54px; }
+        .hero-inner { min-height: 610px; gap: 15px; padding: 54px 18px 125px; }
+        .age-badge { width: 128px; height: 128px; border-width: 6px; font-size: 5.2rem; }
+        .hero-copy { font-size: 1rem; }
+        .button-row { width: 100%; flex-direction: column; align-items: stretch; }
+        .button-row .button { width: 100%; }
+        .countdown-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .time-card { min-height: 112px; }
+        .checklist-grid { grid-template-columns: 1fr; }
+        .form-grid { grid-template-columns: 1fr; }
+        .field-full, .form-help, .form-error, .form-submit { grid-column: auto; }
+        .important-lead { flex-direction: column; align-items: center; text-align: center; }
+        .important-card h3 { font-size: 1.3rem; }
+        .invitation-row { flex-direction: column; gap: 1px; }
+        .invitation-row dd { text-align: left; }
+        .lightbox-prev { left: 12px; }
+        .lightbox-next { right: 12px; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="bubbles-layer" id="bubbles" role="group" aria-label="Burbujas interactivas; toca una para reventarla"></div>
+      <div class="hero-inner">
+        <span class="eyebrow">Fiesta acuática de Mia</span>
+        <div class="age-badge" aria-label="8 años">8</div>
+        <h1>¡Mis 8 Años!</h1>
+        <p class="hero-name">Mia Marvely Magaña Leal</p>
+        <h2>¡Acompáñame a festejar en el agua!</h2>
+        <p class="hero-copy">Prepárate para un día lleno de toboganes, chapuzones, juegos, pastel y muchísima diversión bajo el sol.</p>
+        <div class="button-row">
+          <a class="button" href="#confirmar">Confirmar asistencia</a>
+          <a class="button button-light" href="#detalles">Ver detalles</a>
+        </div>
+        <p class="bubble-hint">Toca las burbujas para reventarlas</p>
+      </div>
+      <svg class="hero-wave" viewBox="0 0 2880 120" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 60 Q180 0 360 60 T720 60 T1080 60 T1440 60 T1800 60 T2160 60 T2520 60 T2880 60 V120 H0 Z"></path>
+      </svg>
+    </header>
+
+    <nav class="site-nav" aria-label="Navegación de la invitación">
+      <div class="nav-inner">
+        <a href="#cuenta-regresiva">Cuenta regresiva</a>
+        <a href="#detalles">Fecha y lugar</a>
+        <a href="#fotos">Fotos</a>
+        <a href="#entradas">Entradas</a>
+        <a href="#menu">Menú</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#confirmar">Confirmar</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="section" id="cuenta-regresiva" aria-labelledby="countdown-title">
+        <div class="section-heading">
+          <h2 id="countdown-title">¡Ya falta poquito!</h2>
+          <p>Cuenta regresiva para el gran chapuzón</p>
+        </div>
+        <div class="countdown-grid" id="countdown" role="timer" aria-live="off">
+          <div class="time-card"><strong id="days">--</strong><span>Días</span></div>
+          <div class="time-card"><strong id="hours">--</strong><span>Horas</span></div>
+          <div class="time-card"><strong id="minutes">--</strong><span>Minutos</span></div>
+          <div class="time-card"><strong id="seconds">--</strong><span>Segundos</span></div>
+        </div>
+        <p class="today-message" id="today-message" hidden>¡Hoy es el gran día!</p>
+      </section>
+
+      <section class="section" id="detalles" aria-labelledby="details-title">
+        <div class="section-heading">
+          <h2 id="details-title">Fecha, hora y lugar</h2>
+          <p>Guarda la fecha en tu calendario</p>
+        </div>
+        <div class="detail-grid">
+          <article class="card detail-card">
+            <span class="detail-icon" aria-hidden="true">♡</span>
+            <p class="detail-label">Fecha</p>
+            <p class="detail-value" id="event-date">Domingo, 20 de diciembre de 2026</p>
+          </article>
+          <article class="card detail-card">
+            <span class="detail-icon" aria-hidden="true">◷</span>
+            <p class="detail-label">Hora</p>
+            <p class="detail-value" id="event-time">Por confirmar</p>
+          </article>
+          <article class="card detail-card">
+            <span class="detail-icon" aria-hidden="true">⌖</span>
+            <p class="detail-label">Lugar</p>
+            <p class="detail-value">Aqua Park Palín<br><span style="font-family:var(--body);font-size:.9rem;font-weight:600">Palín, Escuintla, Guatemala</span></p>
+          </article>
+        </div>
+        <div class="card directions">
+          <h3>¿Cómo llegar?</h3>
+          <div class="button-row">
+            <a class="button" href="https://www.google.com/maps/search/?api=1&amp;query=Aqua+Park+Pal%C3%ADn+Escuintla+Guatemala" target="_blank" rel="noopener noreferrer">⌖ Abrir en Google Maps</a>
+            <a class="button button-aqua" href="https://waze.com/ul?q=Aqua%20Park%20Pal%C3%ADn%20Escuintla&amp;navigate=yes" target="_blank" rel="noopener noreferrer">➤ Abrir en Waze</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="fotos" aria-labelledby="gallery-title">
+        <div class="section-heading">
+          <h2 id="gallery-title">Así celebramos</h2>
+          <p>Toca una foto para verla en grande</p>
+        </div>
+        <div class="gallery-grid" id="gallery"></div>
+        <p class="photo-note">Mira una pequeña historia de mi.</p>
+      </section>
+
+      <section class="section" id="entradas" aria-labelledby="tickets-title">
+        <div class="section-heading">
+          <h2 id="tickets-title">Información importante sobre las entradas</h2>
+        </div>
+        <div class="card important-card">
+          <div class="important-lead">
+            <span class="important-icon" aria-hidden="true">♡</span>
+            <div>
+              <h3>¡La diversión de todos nuestros invitados va por nuestra cuenta!</h3>
+              <p>Cubriremos con mucho cariño la entrada de cada uno y una pequeña refacción. Por favor confirma con tiempo para reservarles sus pases.</p>
+            </div>
+          </div>
+          <p class="warning-note"><strong>Nota importante:</strong> toma en cuenta que, de cancelar luego de haber confirmado, significaría una pérdida que no lograríamos recuperar. Por lo que si gustas cancelar porfavor avisar con anticipación.</p>
+        </div>
+      </section>
+
+      <section class="section" id="menu" aria-labelledby="menu-title">
+        <div class="section-heading">
+          <h2 id="menu-title">Menú del parque</h2>
+          <p>Por si les da hambre después de tanto nadar</p>
+        </div>
+        <div class="card menu-card">
+          <span class="menu-badge" aria-label="Menú no incluido">♧ Menú no incluido en la fiesta</span>
+          <h3>Alimentos y bebidas del parque</h3>
+          <p> Si deseas comprar alimentos o bebidas es adicional, y cada familia cubre su propio consumo.</p>
+          <p>te comparto un poco de informacion sobre el menu que tienen en el parque, para que puedan planear tu visita y tu presupuesto.
+            TENIENDO EN CUENTA QUE LOS PRECIOS PUEDEN VARIAR, Y QUE EL MENÚ PUEDE CAMBIAR, TE COMPARTO ALGUNOS DE LOS PLATOS QUE OFRECEN:
+          </p>
+          <p>El menú incluye, entre otros: </p>
+          <p>* Hamburguesa de res — Q 35</p>
+          <p>* Hamburguesa de pollo — Q 35</p>
+          <p>* Papas fritas — Q 15</p>
+          <p>* Hot-dog — Q 25</p>
+          <p>* Pollo frito — Q 50</p>
+          <p>* Churrasquito — Q 45</p>
+          <p>El menú y los precios se pueden consultar directamente en Aqua Park Palín.
+          El numero de WhatsApp del parque es +502 7821 2970.
+          </p>
+          <p class="menu-reminder">Ahora bien la entrada y una pequeña refacción sí están cubiertas por nosotros, así que no se preocupen por eso.</p>
+        </div>
+      </section>
+
+      <section class="section" id="checklist" aria-labelledby="checklist-title">
+        <div class="section-heading">
+          <h2 id="checklist-title">Checklist para papás</h2>
+          <p>¿Qué meter en la mochila? Toca cada elemento para asegurarte de no olvidar nada:</p>
+        </div>
+        <div class="card checklist-card">
+          <div class="progress-wrap">
+            <div class="progress-track" role="progressbar" aria-label="Elementos empacados" aria-valuemin="0" aria-valuemax="7" aria-valuenow="0" id="check-progress"><div class="progress-fill" id="progress-fill"></div></div>
+            <span class="progress-count" id="progress-count" aria-live="polite">0/7</span>
+          </div>
+          <ul class="checklist-grid" id="checklist-items"></ul>
+          <p class="check-complete" id="check-complete" hidden>¡Mochila lista! Nos vemos en el agua</p>
+        </div>
+      </section>
+
+      <section class="section" id="confirmar" aria-labelledby="rsvp-title">
+        <div class="section-heading">
+          <h2 id="rsvp-title">Confirma tu asistencia</h2>
+          <p>Llena tus datos y prepara una invitación personalizada, Puedes tomarle captura de pantalla y compartir por WhatsApp la informacion</p>
+        </div>
+        <form id="rsvp-form" class="card form-card">
+          <div class="form-grid">
+            <div class="field field-full">
+              <label for="guest-name">Nombre de la familia o invitado</label>
+              <input id="guest-name" name="name" autocomplete="name" maxlength="80" placeholder="Ej. Familia López" required>
+            </div>
+            <div class="field field-full">
+              <label for="guest-phone">WhatsApp del invitado</label>
+              <input id="guest-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="[0-9()+ -]{8,18}" maxlength="18" placeholder="Ej. 5555 1234" required>
+            </div>
+            <div class="field">
+              <span class="field-label">Adultos</span>
+              <div class="stepper" aria-label="Cantidad de adultos">
+                <button type="button" class="stepper-btn" data-target="adults" data-change="-1" aria-label="Quitar un adulto">−</button>
+                <output id="adults-value" aria-live="polite">1</output>
+                <button type="button" class="stepper-btn" data-target="adults" data-change="1" aria-label="Agregar un adulto">+</button>
+              </div>
+            </div>
+            <div class="field">
+              <span class="field-label">Niños</span>
+              <div class="stepper" aria-label="Cantidad de niños">
+                <button type="button" class="stepper-btn" data-target="kids" data-change="-1" aria-label="Quitar un niño">−</button>
+                <output id="kids-value" aria-live="polite">1</output>
+                <button type="button" class="stepper-btn" data-target="kids" data-change="1" aria-label="Agregar un niño">+</button>
+              </div>
+            </div>
+            <p class="field-help form-help">Cantidad de pases que deseas solicitar para tu familia.</p>
+            <div class="field field-full">
+              <label for="guest-message">Espacio para algun mensaje o recordatorio (opcional)</label>
+              <textarea id="guest-message" name="message" maxlength="300" placeholder="Invitación del cumpleaños de Mia"></textarea>
+            </div>
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <button class="button form-submit" type="submit">Crear mi invitación</button>
+          </div>
+        </form>
+
+        <div class="invitation-result" id="invitation-result" hidden>
+          <article class="invitation-card" aria-labelledby="invitation-heading">
+            <p class="invitation-kicker">Invitación especial para</p>
+            <h3 class="invitee-name" id="ticket-name"></h3>
+            <div class="invitation-age" aria-label="8 años">8</div>
+            <p class="invitation-title" id="invitation-heading">¡Mia Marvely Magaña Leal cumple 8 años!</p>
+            <dl class="invitation-details">
+              <div class="invitation-row"><dt>Fecha</dt><dd id="ticket-date"></dd></div>
+              <div class="invitation-row"><dt>Hora</dt><dd id="ticket-time"></dd></div>
+              <div class="invitation-row"><dt>Lugar</dt><dd>Aqua Park Palín, Escuintla</dd></div>
+              <div class="invitation-row"><dt>Pases solicitados</dt><dd id="ticket-passes"></dd></div>
+            </dl>
+            <p class="invite-message" id="ticket-message" hidden></p>
+          </article>
+          <div class="invitation-actions">
+            <a class="button button-aqua" id="whatsapp-invitation" href="#" target="_blank" rel="noopener noreferrer">Enviar invitación por WhatsApp</a>
+            <button class="button button-light" id="edit-invitation" type="button">Editar mis datos</button>
+          </div>
+          <p class="whatsapp-note">WhatsApp abrirá el mensaje ya preparado en el número indicado. Para enviarlo, todavía debes tocar el botón de enviar dentro de WhatsApp.</p>
+        </div>
+
+        <div class="official-rsvp">
+          <p>Porfavor llena este formulario para confirmar tu asistencia y asi sepamos cuantos invitados vendrán. ¡Gracias!</p>
+          <a class="button button-dark" href="https://docs.google.com/forms/d/e/1FAIpQLSfb0A88JCIpjbOc3W2JLSIhP_pLCQpoPwI__o-_Rs7PK7JqCA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Confirmar mi asistencia aquí ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <h2>¡Te esperamos para hacer un gran Splash! 💦</h2>
+      <p>Aqua Park Palín • Escuintla, Guatemala</p>
+      <p class="footer-small">Con mucho cariño, Mia y su familia</p>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galería de fotos" hidden>
+      <div class="lightbox-card">
+        <button class="icon-button lightbox-close" id="lightbox-close" type="button" aria-label="Cerrar foto">×</button>
+        <button class="icon-button lightbox-prev" id="lightbox-prev" type="button" aria-label="Foto anterior">‹</button>
+        <img id="lightbox-image" src="" alt="">
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+        <button class="icon-button lightbox-next" id="lightbox-next" type="button" aria-label="Foto siguiente">›</button>
+      </div>
+    </div>
+
+    <script>
+      const PARTY = {
+        name: "Mia Marvely Magaña Leal",
+        age: 8,
+        dateISO: "2026-12-20T00:11:00-06:00",
+        dateLabel: "Domingo, 20 de diciembre de 2026",
+        timeLabel: "De 11:00 a.m. en adelante.",
+        placeName: "Aqua Park Palín",
+        placeCity: "Palín, Escuintla, Guatemala",
+        mapUrl: "https://www.google.com/maps/search/?api=1&query=Aqua+Park+Pal%C3%ADn+Escuintla+Guatemala",
+        wazeUrl: "https://waze.com/ul?q=Aqua%20Park%20Pal%C3%ADn%20Escuintla&navigate=yes",
+        formUrl: "https://docs.google.com/forms/d/e/1FAIpQLSfb0A88JCIpjbOc3W2JLSIhP_pLCQpoPwI__o-_Rs7PK7JqCA/viewform?usp=publish-editor"
+      };
+
+      // Cambia las rutas y descripciones; el texto de "alt" aparece debajo de cada foto.
+      const PHOTOS = [
+        { src: "./public/fotos/foto-1.png", alt: "En esta foto me presentaron en la iglesia, ¡ahi estan mis papis! " },
+        { src: "./public/fotos/foto-2.png", alt: "Aca estaba dando mis primeros pasos en el parque de Amatitlan" },
+        { src: "./public/fotos/foto-3.png", alt: "Somos una familia feliz por eso mismo te quiero invitar a pasar un momento divertido" },
+        { src: "./public/fotos/foto-4.png", alt: "¡¡Vez lo mucho que me gusta el agua, por eso quiero una fiesta en piscinas!!" }
+      ];
+
+      const PACKING_LIST = [
+        "Traje de baño",
+        "Toalla playera",
+        "Cambio de ropa seca",
+        "Bloqueador solar",
+        "Crocs o sandalias",
+        "Goggles",
+        "Flotador"
+      ];
+
+      const countdownEls = {
+        days: document.getElementById("days"),
+        hours: document.getElementById("hours"),
+        minutes: document.getElementById("minutes"),
+        seconds: document.getElementById("seconds")
+      };
+      document.getElementById("event-date").textContent = PARTY.dateLabel;
+  document.getElementById("event-time").textContent = PARTY.timeLabel;
+  const eventTime = new Date(PARTY.dateISO).getTime();
+
+      function updateCountdown() {
+        const remaining = Math.max(0, eventTime - Date.now());
+        const values = {
+          days: Math.floor(remaining / 86400000),
+          hours: Math.floor((remaining / 3600000) % 24),
+          minutes: Math.floor((remaining / 60000) % 60),
+          seconds: Math.floor((remaining / 1000) % 60)
+        };
+        Object.entries(values).forEach(([unit, value]) => {
+          countdownEls[unit].textContent = String(value).padStart(2, "0");
+        });
+        if (remaining === 0) {
+          document.getElementById("countdown").hidden = true;
+          document.getElementById("today-message").hidden = false;
+        }
+      }
+      updateCountdown();
+      window.setInterval(updateCountdown, 1000);
+
+      const bubblesLayer = document.getElementById("bubbles");
+      let bubbleId = 0;
+      function createBubble() {
+        const bubble = document.createElement("button");
+        const currentId = bubbleId++;
+        const size = 24 + Math.floor(Math.random() * 20);
+        const duration = 13 + Math.random() * 10;
+        const edge = 3 + Math.floor(Math.random() * 8);
+        bubble.type = "button";
+        bubble.className = "bubble";
+        bubble.setAttribute("aria-label", `Reventar burbuja ${currentId + 1}`);
+        bubble.title = "Toca o pulsa para reventar";
+        if (currentId % 2 === 0) bubble.style.left = `${edge}%`;
+        else bubble.style.right = `${edge}%`;
+        bubble.style.bottom = `${-size - Math.random() * 100}px`;
+        bubble.style.width = `${size}px`;
+        bubble.style.height = `${size}px`;
+        bubble.style.animationDuration = `${duration}s`;
+        bubble.style.animationDelay = `${-Math.random() * duration}s`;
+        bubble.dataset.id = String(currentId);
+        bubble.addEventListener("click", () => {
+          if (bubble.classList.contains("popped")) return;
+          bubble.classList.add("popped");
+          window.setTimeout(() => {
+            bubble.remove();
+            window.setTimeout(createBubble, 900);
+          }, 260);
+        });
+        bubblesLayer.appendChild(bubble);
+      }
+      for (let i = 0; i < 17; i += 1) createBubble();
+
+      const gallery = document.getElementById("gallery");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.getElementById("lightbox-image");
+      const lightboxCaption = document.getElementById("lightbox-caption");
+      let activePhoto = 0;
+      let previousPhotoButton = null;
+
+      PHOTOS.forEach((photo, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "photo-button";
+        button.setAttribute("aria-label", `Ampliar foto ${index + 1}`);
+        const image = document.createElement("img");
+        image.src = photo.src;
+        image.alt = photo.alt;
+        image.loading = "lazy";
+        const caption = document.createElement("span");
+        caption.className = "photo-caption";
+        caption.textContent = photo.alt;
+        button.append(image, caption);
+        button.addEventListener("click", () => openPhoto(index, button));
+        gallery.appendChild(button);
+      });
+
+      function showPhoto(index) {
+        activePhoto = (index + PHOTOS.length) % PHOTOS.length;
+        lightboxImage.src = PHOTOS[activePhoto].src;
+        lightboxImage.alt = PHOTOS[activePhoto].alt;
+        lightboxCaption.textContent = PHOTOS[activePhoto].alt;
+      }
+      function openPhoto(index, button) {
+        previousPhotoButton = button;
+        showPhoto(index);
+        lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+        document.getElementById("lightbox-close").focus();
+      }
+      function closePhoto() {
+        lightbox.hidden = true;
+        document.body.style.overflow = "";
+        if (previousPhotoButton) previousPhotoButton.focus();
+      }
+      document.getElementById("lightbox-close").addEventListener("click", closePhoto);
+      document.getElementById("lightbox-prev").addEventListener("click", () => showPhoto(activePhoto - 1));
+      document.getElementById("lightbox-next").addEventListener("click", () => showPhoto(activePhoto + 1));
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closePhoto();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (lightbox.hidden) return;
+        if (event.key === "Escape") closePhoto();
+        if (event.key === "ArrowRight") showPhoto(activePhoto + 1);
+        if (event.key === "ArrowLeft") showPhoto(activePhoto - 1);
+      });
+
+      const checkedItems = new Set();
+      const checklistItems = document.getElementById("checklist-items");
+      const progressFill = document.getElementById("progress-fill");
+      const progressCount = document.getElementById("progress-count");
+      const checkProgress = document.getElementById("check-progress");
+      const checkComplete = document.getElementById("check-complete");
+
+      function updateChecklist() {
+        const count = checkedItems.size;
+        const percent = (count / PACKING_LIST.length) * 100;
+        progressFill.style.width = `${percent}%`;
+        progressCount.textContent = `${count}/${PACKING_LIST.length}`;
+        checkProgress.setAttribute("aria-valuenow", String(count));
+        checkComplete.hidden = count !== PACKING_LIST.length;
+      }
+      PACKING_LIST.forEach((item) => {
+        const listItem = document.createElement("li");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "check-item";
+        button.setAttribute("aria-pressed", "false");
+        const circle = document.createElement("span");
+        circle.className = "check-circle";
+        circle.setAttribute("aria-hidden", "true");
+        const label = document.createElement("span");
+        label.className = "check-label";
+        label.textContent = item;
+        button.append(circle, label);
+        button.addEventListener("click", () => {
+          const isChecked = checkedItems.has(item);
+          if (isChecked) checkedItems.delete(item);
+          else checkedItems.add(item);
+          button.classList.toggle("is-checked", !isChecked);
+          button.setAttribute("aria-pressed", String(!isChecked));
+          circle.textContent = isChecked ? "" : "✓";
+          updateChecklist();
+        });
+        listItem.appendChild(button);
+        checklistItems.appendChild(listItem);
+      });
+
+      const rsvpForm = document.getElementById("rsvp-form");
+      const invitationResult = document.getElementById("invitation-result");
+      const adultsOutput = document.getElementById("adults-value");
+      const kidsOutput = document.getElementById("kids-value");
+      const formError = document.getElementById("form-error");
+      let generatedInvitation = null;
+
+      document.querySelectorAll(".stepper-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          const output = document.getElementById(`${button.dataset.target}-value`);
+          const next = Math.max(0, Math.min(10, Number(output.textContent) + Number(button.dataset.change)));
+          output.textContent = String(next);
+        });
+      });
+
+      function countLabel(count, singular, plural) {
+        return `${count} ${count === 1 ? singular : plural}`;
+      }
+
+      function buildInvitation(guest) {
+        const isPublicPage = ["http:", "https:"].includes(window.location.protocol) &&
+          !["localhost", "127.0.0.1", "0.0.0.0"].includes(window.location.hostname);
+        const shareUrl = isPublicPage
+          ? `Invitación web: ${window.location.href.split("#")[0]}`
+          : "";
+        return [
+          `¡Hola ${guest.name}!`,
+          "",
+          `Estás invitado(a) a celebrar los ${PARTY.age} años de ${PARTY.name}.`,
+          `Fecha: ${PARTY.dateLabel}`,
+          `Hora: ${PARTY.timeLabel}`,
+          `Lugar: ${PARTY.placeName}, ${PARTY.placeCity}`,
+          `Pases solicitados: ${guest.adults + guest.kids} (${countLabel(guest.adults, "adulto", "adultos")}, ${countLabel(guest.kids, "niño", "niños")})`,
+          guest.message ? `Mensaje: ${guest.message}` : "",
+          "",
+          `Ubicación: ${PARTY.mapUrl}`,
+          shareUrl,
+          "",
+          "¡Te esperamos para hacer un gran Splash!"
+        ].filter((line) => line !== "").join("\n");
+      }
+
+      function makeWhatsAppUrl(phone, message) {
+        let digits = phone.replace(/\D/g, "");
+        if (digits.length === 8) digits = `502${digits}`;
+        return `https://wa.me/${digits}?text=${encodeURIComponent(message)}`;
+      }
+
+      function renderInvitation(guest) {
+        document.getElementById("ticket-name").textContent = guest.name;
+        document.getElementById("ticket-date").textContent = PARTY.dateLabel;
+        document.getElementById("ticket-time").textContent = PARTY.timeLabel;
+        document.getElementById("ticket-passes").textContent = `${countLabel(guest.adults, "adulto", "adultos")} · ${countLabel(guest.kids, "niño", "niños")} (${guest.adults + guest.kids} total)`;
+        const note = document.getElementById("ticket-message");
+        note.textContent = guest.message ? `“${guest.message}”` : "";
+        note.hidden = !guest.message;
+        const shareText = buildInvitation(guest);
+        const whatsapp = document.getElementById("whatsapp-invitation");
+        whatsapp.href = makeWhatsAppUrl(guest.phone, shareText);
+        whatsapp.setAttribute("aria-label", `Enviar invitación por WhatsApp a ${guest.name}`);
+      }
+
+      rsvpForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(rsvpForm);
+        const guest = {
+          name: String(formData.get("name") || "").trim(),
+          phone: String(formData.get("phone") || "").trim(),
+          adults: Number(adultsOutput.textContent),
+          kids: Number(kidsOutput.textContent),
+          message: String(formData.get("message") || "").trim()
+        };
+        if (guest.adults + guest.kids < 1) {
+          formError.textContent = "Indica al menos un adulto o un niño para preparar los pases.";
+          formError.hidden = false;
+          return;
+        }
+        formError.hidden = true;
+        generatedInvitation = guest;
+        renderInvitation(guest);
+        rsvpForm.hidden = true;
+        invitationResult.hidden = false;
+        document.getElementById("confirmar").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      document.getElementById("edit-invitation").addEventListener("click", () => {
+        invitationResult.hidden = true;
+        rsvpForm.hidden = false;
+        document.getElementById("guest-name").focus();
+      });
+    </script>
+  </body>
+</html>
